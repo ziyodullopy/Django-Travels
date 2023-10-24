@@ -1,0 +1,45 @@
+{% load static %}
+<nav class="site-nav bg-primary" >
+  <div class="container">
+    <div class="site-navigation">
+      <a href="/" class="logo m-0">Tour <span class="text-primary">.</span></a>
+
+      <ul class="js-clone-nav d-none d-lg-inline-block text-left site-menu float-right">
+        <li class="active"><a href="/">Home</a></li>
+        <li class="has-children">
+          <a href="#">Tools</a>
+          <ul class="dropdown">
+            <li><a href="/search/">Search</a></li>
+            {% if request.user.is_authenticated %}
+            <li><a href="/rate/">Rate</a></li>
+            {% endif %}
+            {% if not request.user.is_authenticated %}
+            <li><a href="/login/">Rate</a></li>
+            {% endif %}
+            
+            <li class="has-children">
+              <a href="#">Menu Two</a>
+              <ul class="dropdown">
+                <li><a href="#">Sub Menu One</a></li>
+                <li><a href="#">Sub Menu Two</a></li>
+                <li><a href="#">Sub Menu Three</a></li>
+              </ul>
+            </li>
+            <li><a href="#">Menu Three</a></li>
+          </ul>
+        </li>
+        <li><a href="/">Services</a></li>
+        <li><a href="/">About</a></li>
+        <li><a href="/contact/">Contact Us</a></li>
+        {% if request.user.is_superuser %}
+        <li><a href="{% url 'developer_home' %}">Developer</a></li>
+        {% endif %}
+      </ul>
+
+      <a href="#" class="burger ml-auto float-right site-menu-toggle js-menu-toggle d-inline-block d-lg-none light" data-toggle="collapse" data-target="#main-navbar">
+        <span></span>
+      </a>
+
+    </div>
+  </div>
+</nav>

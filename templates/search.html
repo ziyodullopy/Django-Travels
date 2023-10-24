@@ -1,0 +1,51 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block content %}
+<div class="hero" style="margin-bottom: 0;">
+    <div class="container">
+        <h1 class="text-center text-uppercase">SERACH</h1>
+        <form class="input-group">
+            <input type="text" class="form-control" placeholder="Search..." name="q">
+            <button type="submit" class="btn btn-success" id="button-modal" data-bs-toggle="modal"
+                data-bs-target="#search"><i class=" fa-brands fa-searchengin fa-beat-fade"
+                    style="font-size: 25px;"></i></button>
+        </form>
+    </div>
+</div>
+
+{% if places %}
+<div class="untree_co-section">
+    <div class="container">
+        <div class="row">
+            {% for x in places %}
+            <div class="col-6 col-sm-6 col-md-6 col-lg-3 mb-4 mb-lg-0">
+                <div class="media-1">
+                    <a href="{% url 'place_detail' x.id %}" class="d-block mb-3"><img src="{{ x.image.url }}"
+                            alt="Image" class="img-fluid" style="height: 300px; width: 300px; object-fit: cover;"></a>
+                    <span class="d-flex align-items-center loc mb-2">
+                        <span class="icon-room mr-3"></span>
+                        <span>{{ x.country.name }}</span>
+                    </span>
+                    <div class="d-flex align-items-center">
+                        <div>
+                            <h3><a href="#">{{ x.name }}</a></h3>
+                            <div class="price ml-auto">
+                                <span>${{ x.price }}</span>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+          
+
+        </div>
+        {% endfor %}
+    </div>
+    
+</div>
+{% else %}
+<h1 class="text-muted h3 text-center text-uppercase my-5">Not Found</h1>
+{% endif %}
+{% endblock %}

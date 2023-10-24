@@ -1,0 +1,17 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block content %}
+{% load widget_tweaks %}
+
+<div class="hero">
+    <div class="cointaner">
+      <h1 style="text-align: center; font-family: sans-serif;" class="text-uppercase">{{ place.name }}</h1>
+  
+    </div>
+  </div>
+<form method="POST" >
+    {% csrf_token %}
+    {{ form }}
+    <button style="margin-top: 200px;" class="btn btn-info" type="submit">Send</button>
+</form>
+{% endblock %}

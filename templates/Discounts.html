@@ -1,0 +1,35 @@
+{% load static %}
+<div class="untree_co-section">
+    <div class="container">
+        <div class="row justify-content-center text-center mb-5">
+            <div class="col-lg-6">
+                <h2 class="section-title text-center mb-3">Special Offers &amp; Discounts</h2>
+                <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
+            </div>
+        </div>
+        <div class="row">
+            {% for place in places %}
+            <div class="col-6 col-sm-6 col-md-6 col-lg-3 mb-4 mb-lg-0">
+                <div class="media-1">
+                    <a href="{% url 'place_detail' place.id %}" class="d-block mb-3"><img style="height: 350px; object-fit: cover;" src="{{ place.image.url }}" alt="Image" class="img-fluid"></a>
+                    <span class="d-flex align-items-center loc mb-2">
+                        <span class="icon-room mr-3"></span>
+                        <span>{{ place.country.name }}</span>
+                    </span>
+                    <div class="d-flex align-items-center">
+                        <div>
+                            <h3><a href="#">{{ place.name }}</a></h3>
+                            <div class="price ml-auto">
+                                <span>${{ place.price }}</span>
+                            </div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+            {% endfor %}
+         
+        </div>
+    </div>
+</div>

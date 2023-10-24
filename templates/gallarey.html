@@ -1,0 +1,17 @@
+{% extends 'index.html' %}
+{% load widget_tweaks %}
+{% load static %}
+{% block content %}
+<div class="hero">
+    <div class="cointaner">
+      <h1 style="text-align: center; font-family: sans-serif; position: relative; top: 50px;" class="text-uppercase">Gallery</h1>
+  
+    </div>
+  </div>
+    {% for x in images %}
+        <img style="width: 400px; height: 400px; object-fit: cover;" src="{{ x.img.url }}" alt="">
+    {% endfor %}
+{% endblock %}
+
+
+

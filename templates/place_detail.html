@@ -1,0 +1,59 @@
+{% extends 'index.html' %}
+{% load widget_tweaks %}
+{% load static %}
+{% block content %}
+<div class="hero">
+  <div class="cointaner">
+    <h1 style="text-align: center; font-family: sans-serif;" class="text-uppercase">{{ place.name }}</h1>
+
+  </div>
+</div>
+
+<div class="container">
+  <img style="height: 300px; width: 300px; object-fit: cover;" src="{{ place.image.url }}" alt="">
+  <h1 class="my-4">Information about this package</h1>
+  <ul>
+    <li class="list-group-item">GUIDE: $ {{ detail.guide_price }}</li>
+    <li class="list-group-item">TAXI: $ {{ detail.taxi_price }}</li>
+    <li class="list-group-item">FOOD: $ {{ detail.food_price }}</li>
+  </ul>
+
+  <p class="my-4">{{ place.description }}</p>
+  <div style="width: 550px;">
+    <button class="btn btn-info my-1">Add to Wishlist</button>
+    <button class="btn btn-danger my-1">Go through</button>
+    <button class="btn btn-info my-1">Get Consultat</button>
+    <button class="btn btn-danger my-1">Other Options</button>
+    <button type="submit" class="btn btn-info my-1" data-bs-toggle="modal" data-bs-target="#buy">Buy Or Rent</button>
+    <button class="btn btn-danger my-1">Get Cupon</button>
+    <button class="btn btn-info my-1">Order Baakup</button>
+    <a href="{% url 'gallarey' gallarey.id %}" class="btn btn-danger">Gallarey</a>
+  </div>
+
+</div>
+</div>
+
+<div class="modal fade" id="buy" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Order Place</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <form method="POST">
+        {% csrf_token %}
+        <div class="modal-body">
+          {% render_field form.full_name class+="form-control" placeholder="Full name"%}
+          {% render_field form.phone_number class+="form-control" placeholder="Phone number"%}
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary">Order</button>
+        </div>
+
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}

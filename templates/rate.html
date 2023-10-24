@@ -1,0 +1,29 @@
+{% extends 'index.html' %}
+{% load widget_tweaks %}
+{% load static %}
+{% block content %}
+<div class="hero">
+    <div class="cointaner">
+      <h1 style="text-align: center; font-family: sans-serif;" class="text-uppercase">Rate</h1>
+  
+    </div>
+  </div>
+
+
+    <div class="wrapper" style="background: #b92b27;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #1565C0, #b92b27);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #1565C0, #b92b27); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+margin-top: 80px; width: 100%px; height: 750px; position: relative; bottom: 100px; ">
+<div class="container" style="background-color: white; width: 600px; height: 600px; position: relative; top: 75px; opacity: 1;">
+<form method="POST" class="w-75" style="text-align: center; margin-left: auto; margin-right: auto; position: relative; top: 55px;">
+    {% csrf_token %}
+    {% csrf_token %}
+        {% render_field form.text class+="form-control w-100" placeholder="Message" %}
+        <div class="div" style="width: 20px;">
+        {% render_field form.rate class+="form-control my-2 w-25" placeholder="Message" %}
+      </div>
+        <button type="submit" class="btn btn-primary w-250">Send</button>
+</form>
+</div>
+</div>
+{% endblock %}

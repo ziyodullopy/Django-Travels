@@ -1,0 +1,25 @@
+{% extends 'index.html' %}
+{% load widget_tweaks %}
+{% load static %}
+{% block content %}
+
+
+<div class="wrapper" style="background: #b92b27;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #1565C0, #b92b27);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #1565C0, #b92b27); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+margin-top: 80px; width: 100%px; height: 100vh; ">
+<div class="container" style="background-color: white; width: 600px; height: 600px; position: relative; top: 75px; opacity: 1;">
+<form method="POST" class="w-75" style="text-align: center; margin-left: auto; margin-right: auto; position: relative; top: 55px;">
+
+<h2 style="font-family: sans-serif;">Contact Us</h2>
+    {% csrf_token %}
+    {% render_field form.full_name class+="form-control my-2" placeholder="Full name" %}
+    {% render_field form.email class+="form-control my-2" placeholder="Email" %}
+    {% render_field form.phone_number class+="form-control my-2" placeholder="Phone Number" %}
+    {% render_field form.message class+="form-control my-2" placeholder="Message" %}
+    <button type="submit" class="btn btn-outline-success">Send</button>
+</form>
+</div>
+</div>
+
+{% endblock %}
